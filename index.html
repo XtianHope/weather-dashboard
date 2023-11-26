@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <h1>Weather Dashboard</h1>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
 
-    <form id="search-form">
-        <input type="text" id="city-input" placeholder="Charlotte">
-        <button type="submit" id="search-btn">Search</button>
-    </form>
+<div class ="left-column">
+    <h2>Search For A City:</h2>
+    <input type="text" id="search-input" placeholder="Enter City Name">
+    <button id="search-button">Search</button>
 
     <div id="weather-info">
         <h2 id="Charlotte"></h2>
@@ -49,7 +51,7 @@
         <p id="humidity"></p>
         <p id="wind-speed"></p>
         <p id="uv-index"></p>
-        
+
         
 <script src="./assets/js/script.js"></script>   
 </body>
