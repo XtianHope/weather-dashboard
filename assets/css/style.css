@@ -53,3 +53,9 @@ header {
     font-size: 15px;
     margin-bottom: 10px;
 }
+
+#weather-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
