@@ -28,3 +28,15 @@ header {
     padding: 5px;
     width: 30%;
 }
+
+#search-button {
+    padding: 5px 10px;
+    width: 10%;
+    background-color: #0e0b99;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
