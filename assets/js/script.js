@@ -32,3 +32,21 @@ getCityGeoData();
 
 // City Buttons
 const cityButtons = document.querySelectorAll('.city-button');
+
+// Show weather container for the selected/clicked city
+cityButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const city = button.getAttribute('data-city');
+        const cityContainer = document.getElementById(`${city}-container`);
+
+        // Hide all weather containers
+        document.querySelectorAll('.weather-container').forEach(container => {
+            container.style.display = 'none';
+        });
+        
+        // Show weather container for selected/clicked city
+        if (cityContainer) {
+            cityContainer.style.display = 'block';
+        }
+    });
+});
