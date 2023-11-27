@@ -139,3 +139,11 @@ header {
     color: white;
     background-color: #09057e;
   }
+
+
+  .forecast-box .date {
+    font-weight: bold;
+    margin-bottom: 30px;
+    align-items: center;
+  }
+  
