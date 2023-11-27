@@ -96,19 +96,12 @@ header {
 
 
 .weather-container h2 {
-    text-align: center;
     margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #0e0b99;
-}
+    text-align: center;
+    font-size: 40px;
+  }
+  
 
 .weather-info-item {
     margin-bottom: 5px;
-}
-
-#charlotte-container .weather-info-item {
-    display: flex;
-    flex-direction:row;
-    align-items: center;
-    justify-content: space-between;
 }
