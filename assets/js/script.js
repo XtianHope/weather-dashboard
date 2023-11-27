@@ -216,33 +216,34 @@ function getWeather(city) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    // City Buttons
     const cityButtons = document.querySelectorAll('.city-button');
-
-    // Show weather container for the selected/clicked city
-    cityButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const city = button.getAttribute('data-city');
-            const cityContainer = document.getElementById(`${city}-container`);
-
-            // Hide all weather containers
-            document.querySelectorAll('.weather-container').forEach(container => {
-                container.style.display = 'none';
-            });
-
-            // Show weather container for selected/clicked city
-            if (cityContainer) {
-                cityContainer.style.display = 'block';
-
-                // Fetch weather data for the selected city and handle the promise
-                getWeather(city)
-                    .then(() => {
-                        getFiveDayForecast(city);
-                    })
-                    .catch(error => {
-                        console.log(`Error fetching weather for ${city}:`, error);
-                    });
-            }
+    const flexContainer = document.querySelector('.flex-container');
+  
+    // Store cities for which weather data has been fetched
+    const fetchedCities = [];
+  
+    // Update the cityButtons event listener
+  cityButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const city = button.getAttribute('data-city');
+      const cityContainer = document.getElementById(`${city}-container`);
+  
+      if (!fetchedCities.includes(city)) {
+        fetchedCities.push(city); 
+        cityContainer.style.display = 'block';
+        getWeather(city); 
+        getFiveDayForecast(city);
+      } else {
+        // If already fetched, simply display the weather container
+        cityContainer.style.display = 'block';
+      }
+  
+      // Hide all other weather containers except the clicked one
+      document.querySelectorAll('.weather-container').forEach(container => {
+        if (container.id !== `${city}-container`) {
+          container.style.display = 'none';
+          }
         });
+      });
     });
-});
+  });
