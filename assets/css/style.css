@@ -103,5 +103,7 @@ header {
   
 
 .weather-info-item {
-    margin-bottom: 5px;
-}
+    margin-bottom: 30px;
+    flex-direction: column;
+    gap: 5px;
+  }
