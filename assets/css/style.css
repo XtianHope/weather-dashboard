@@ -79,3 +79,13 @@ header {
     border-radius: 5px;
     width: 300px;
 }
+
+.weather-container h2 {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #0e0b99;
+}
+
+.weather-info-item {
+    margin-bottom: 5px;
+}
