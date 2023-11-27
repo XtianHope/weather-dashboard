@@ -52,6 +52,14 @@ header {
     justify-content: space-between;
   }
 
+  .weather-container {
+    flex: 0 0 calc(30% - 20px);
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
 .city-option {
     width: 100%;
     background-color: #cbcbce;
