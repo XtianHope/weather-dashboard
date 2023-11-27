@@ -45,6 +45,13 @@ header {
     font-size: 15px;
 }
 
+.flex-container {
+    flex: 0 0 65%;
+    flex-wrap: wrap
+    display: flex;
+    justify-content: space-between;
+  }
+
 .city-option {
     width: 100%;
     background-color: #cbcbce;
