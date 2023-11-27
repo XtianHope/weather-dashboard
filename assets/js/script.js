@@ -28,6 +28,25 @@ function getWeather(city) {
       });
   }
 
+// Function to create separate boxes for each date and weather information
+function createWeatherBox(city, date, averageTemp, averageHumidity, averageWindSpeed) {
+    const forecastContainer = document.getElementById(`${city}-forecast`);
+    const forecastElement = document.createElement('div');
+    forecastElement.classList.add('forecast-box');
+  
+    forecastElement.innerHTML = `
+      <div class="date">${date}</div>
+      <div class="weather-info">
+        <p>Average Temperature: ${averageTemp.toFixed(2)} &#8457;</p>
+        <p>Average Humidity: ${averageHumidity.toFixed(2)}%</p>
+        <p>Average Wind Speed: ${averageWindSpeed.toFixed(2)} mph</p>
+      </div>
+    `;
+  
+    forecastContainer.appendChild(forecastElement);
+  }
+
+
 // Function to pull 5 day forecast data from OpenWeather API
 function getFiveDayForecast(city) {
     const apiKey = '8823600ae11757d74ec67f06b60ca5ef';
