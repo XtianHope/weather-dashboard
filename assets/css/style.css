@@ -127,3 +127,15 @@ header {
     flex-direction: column;
     gap: 5px;
   }
+
+  .forecast-box {
+    border: 3px solid #ccc;
+    padding: 10px;
+    margin-bottom: 30px;
+    display: inline-block; 
+    width: calc(20% - 10px); 
+    margin-right: 30px;
+    text-align: center;
+    color: white;
+    background-color: #09057e;
+  }
