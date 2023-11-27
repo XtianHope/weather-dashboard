@@ -1,33 +1,32 @@
 // Function to pull weather data from OpenWeather API
 function getWeather(city) {
     const apiKey = '8823600ae11757d74ec67f06b60ca5ef';
-    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-
-    return fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            const currentTemp = data.main.temp;
-            const currentHumidity = data.main.humidity;
-            const currentWindSpeed = data.wind.speed;
-            const currentDate = new Date(data.dt * 1000); // Convert timestamp to date
-
-            const currentWeatherBox = document.createElement('div');
-            currentWeatherBox.classList.add('current-weather-box');
-            currentWeatherBox.innerHTML = `
-                <h3>${city}</h3>
-                <p>Date: ${currentDate.toDateString()}</p>
-                <p>Temperature: ${currentTemp.toFixed(2)} &#8457;</p>
-                <p>Humidity: ${currentHumidity.toFixed(2)}%</p>
-                <p>Wind Speed: ${currentWindSpeed.toFixed(2)} mph</p>
-            `;
-
-            const forecastContainer = document.getElementById(`${city}-forecast`);
-            forecastContainer.insertBefore(currentWeatherBox, forecastContainer.firstChild);
-        })
-        .catch(error => {
-            console.log(`Error fetching current weather for ${city}:`, error);
+    const currentWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  
+    fetch(currentWeatherUrl)
+      .then(response => response.json())
+      .then(data => {
+        const tempElement = document.getElementById(`${city}-temp`);
+        const humidityElement = document.getElementById(`${city}-humidity`);
+        const windElement = document.getElementById(`${city}-wind`);
+        const dateElement = document.getElementById(`${city}-date`);
+  
+        const currentDate = new Date().toLocaleDateString('en-US', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
         });
-}
+  
+        dateElement.textContent = `Today: ${currentDate}`;
+        tempElement.textContent = `Temperature: ${data.main.temp} °F`;
+        humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
+        windElement.textContent = `Wind Speed: ${data.wind.speed} mph`;
+      })
+      .catch(error => {
+        console.log('Error fetching weather data:', error);
+      });
+  }
 
 // Function to pull 5 day forecast data from OpenWeather API
 function getFiveDayForecast(city) {
