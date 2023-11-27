@@ -22,16 +22,10 @@ header {
   }
   
 
-aside {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    background-color: #fff;
-    padding: 20px 0;
-    margin: 20px 0;
-    border-radius: 5px;
-}
+  aside {
+    flex: 0 0 30%;
+    background-color: #f2f2f2;
+  }  
 
 #search-input {
     margin-bottom: 10px;
