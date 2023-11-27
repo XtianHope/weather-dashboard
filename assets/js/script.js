@@ -204,6 +204,17 @@ function getWeather(city) {
       });
   }
 
+      // Set the weather icon based on the condition
+      if (weatherIcons[weatherCondition]) {
+        const iconClass = weatherIcons[weatherCondition];
+        weatherIconElement.innerHTML = `<i class="${iconClass}"></i>`;
+      }
+    })
+    .catch(error => {
+      console.log('Error fetching weather data:', error);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // City Buttons
     const cityButtons = document.querySelectorAll('.city-button');
