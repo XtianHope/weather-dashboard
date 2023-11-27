@@ -30,3 +30,5 @@ function getCityGeoData() {
 
 getCityGeoData();
 
+// City Buttons
+const cityButtons = document.querySelectorAll('.city-button');
