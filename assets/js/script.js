@@ -88,6 +88,41 @@ function getFiveDayForecast(city) {
         console.log('Error fetching 5-day forecast data:', error);
       });
   }
+
+
+// Function to handle adding a city button
+function addCityButton(city) {
+    const cityOptions = document.querySelector('aside');
+    const newButton = document.createElement('button');
+    newButton.classList.add('city-button');
+    newButton.setAttribute('data-city', city.toLowerCase());
+    newButton.textContent = city;
+    cityOptions.appendChild(newButton);
+  }
+  
+  // Function to handle the search event
+  function handleSearch() {
+    const searchInput = document.getElementById('search-input');
+    const cityName = searchInput.value.trim();
+  
+    // Check if the city name is not empty
+    if (cityName !== '') {
+      addCityButton(cityName);
+  
+      // Clear the search input field
+      searchInput.value = '';
+  
+      const dynamicButton = document.querySelector(`[data-city="${cityName.toLowerCase()}"]`);
+      if (dynamicButton) {
+        dynamicButton.click();
+      }
+    } else {
+      alert('Please enter a city name!');
+    }
+  }
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
     // City Buttons
     const cityButtons = document.querySelectorAll('.city-button');
