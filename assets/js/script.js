@@ -166,7 +166,43 @@ function createWeatherIcon(city, iconClass) {
     weatherIconElement.innerHTML = `<i class="${iconClass}"></i>`;
   }
   
-
+// Function to pull weather data from OpenWeather API
+function getWeather(city) {
+    const apiKey = '8823600ae11757d74ec67f06b60ca5ef';
+    const currentWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  
+    fetch(currentWeatherUrl)
+      .then(response => response.json())
+      .then(data => {
+        const tempElement = document.getElementById(`${city}-temp`);
+        const humidityElement = document.getElementById(`${city}-humidity`);
+        const windElement = document.getElementById(`${city}-wind`);
+        const dateElement = document.getElementById(`${city}-date`);
+        const weatherIconElement = document.getElementById(`${city}-weather-icon`);
+  
+        const currentDate = new Date().toLocaleDateString('en-US', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
+  
+        dateElement.textContent = `Today: ${currentDate}`;
+        tempElement.textContent = `Temperature: ${data.main.temp} °F`;
+        humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
+        windElement.textContent = `Wind Speed: ${data.wind.speed} mph`;
+  
+        const weatherCondition = data.weather[0].main;
+  
+        // Set the weather icon based on the condition
+        if (weatherIcons[weatherCondition]) {
+          const iconClass = weatherIcons[weatherCondition];
+          createWeatherIcon(city, iconClass);
+      })
+      .catch(error => {
+        console.log('Error fetching weather data:', error);
+      });
+  }
 
 document.addEventListener('DOMContentLoaded', function () {
     // City Buttons
