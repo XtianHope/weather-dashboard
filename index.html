@@ -10,23 +10,26 @@
 </head>
 
 <body>
-    <header>
+    <nav>
+      <header>
         <h1>Weather Dashboard</h1>
-    </header>
-    <main>
-        <aside>
-            <!--Left column for city search/options -->
-            <h2>Search For A City:</h2>
-            <input type="text" id="search-input" placeholder="Enter City Name">
-            <button id="search-button">Search</button>
-
-            <h2>City Options</h2>
-            <button class="city-button" data-city="charlotte">Charlotte</button>
-            <button class="city-button" data-city="raleigh">Raleigh</button>
-            <button class="city-button" data-city="greensboro">Greensboro</button>
-            <button class="city-button" data-city="durham">Durham</button>
-            <button class="city-button" data-city="winston-salem">Winston-Salem</button>
-        </aside>
+      </header>
+    </nav>
+    <main class="main-container">
+      <aside>
+        <!-- Left column for city search/options -->
+        <h2>Search For A City:</h2>
+        <input type="text" id="search-input" placeholder="Enter City Name">
+        <button id="search-button">Search</button>
+  
+        <h2>City Options</h2>
+        <button class="city-button" data-city="charlotte">Charlotte</button>
+        <button class="city-button" data-city="raleigh">Raleigh</button>
+        <button class="city-button" data-city="greensboro">Greensboro</button>
+        <button class="city-button" data-city="durham">Durham</button>
+        <button class="city-button" data-city="winston-salem">Winston-Salem</button>
+      </aside>
+      
     <!-- Container for weather information -->
     <div class="flex-container">
         <!-- CHARLOTTE -->
