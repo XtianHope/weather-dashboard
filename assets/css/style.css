@@ -1,3 +1,9 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
@@ -12,7 +18,7 @@ header {
     padding: 15px 0;
 }
 
-.left-column {
+aside {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -61,6 +67,10 @@ header {
 }
 
 .weather-info {
+    width: 50%;
+    margin-left: auto;
+    margin-right: 0;
+    flex-direction: column;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -72,19 +82,9 @@ header {
     display: none;
 }
 
-/* .weather-container { 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    padding: 20px 0;
-    margin: 20px 0;
-    border-radius: 5px;
-    width: 300px;
-}*/
 
 .weather-container h2 {
+    text-align: center;
     margin-bottom: 10px;
     padding-bottom: 5px;
     border-bottom: 2px solid #0e0b99;
@@ -92,4 +92,11 @@ header {
 
 .weather-info-item {
     margin-bottom: 5px;
+}
+
+#charlotte-container .weather-info-item {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
 }
