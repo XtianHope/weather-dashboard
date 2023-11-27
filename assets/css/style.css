@@ -90,6 +90,11 @@ header {
     margin-top: 20px;
 }
 
+.info-label {
+    font-weight: bold;
+  }
+  
+
 .weather-container { 
     display: none;
 }
