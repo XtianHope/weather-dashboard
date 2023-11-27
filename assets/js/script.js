@@ -160,6 +160,13 @@ const weatherIcons = {
     Clouds: 'wi wi-day-cloudy',
   };       
 
+// Function to create weather icons based on weather conditions
+function createWeatherIcon(city, iconClass) {
+    const weatherIconElement = document.getElementById(`${city}-weather-icon`);
+    weatherIconElement.innerHTML = `<i class="${iconClass}"></i>`;
+  }
+  
+
 
 document.addEventListener('DOMContentLoaded', function () {
     // City Buttons
