@@ -47,49 +47,47 @@ function createWeatherBox(city, date, averageTemp, averageHumidity, averageWindS
   }
 
 
-// Function to pull 5 day forecast data from OpenWeather API
+// Function to pull 5-day forecast data from OpenWeather API
 function getFiveDayForecast(city) {
     const apiKey = '8823600ae11757d74ec67f06b60ca5ef';
     const apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
-
+  
     fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            const dailyForecasts = {};
-            data.list.forEach(forecast => {
-                const date = forecast.dt_txt.split(' ')[0];
-                if (!dailyForecasts[date]) {
-                    dailyForecasts[date] = [];
-                }
-                dailyForecasts[date].push(forecast);
-            });
-
-            const forecastContainer = document.getElementById(`${city}-forecast`);
-
-            Object.keys(dailyForecasts).forEach(date => {
-                const forecastsForDay = dailyForecasts[date];
-                let totalTemp = 0;
-                let totalHumidity = 0;
-                let totalWindSpeed = 0;
-
-                forecastsForDay.forEach(forecast => {
-                    totalTemp += forecast.main.temp;
-                    totalHumidity += forecast.main.humidity;
-                    totalWindSpeed += forecast.wind.speed;
-                });
-
-                const averageTemp = totalTemp / forecastsForDay.length;
-                const averageHumidity = totalHumidity / forecastsForDay.length;
-                const averageWindSpeed = totalWindSpeed / forecastsForDay.length;
-
-                createWeatherBox(city, date, averageTemp, averageHumidity, averageWindSpeed);
-            });
-        })
-        .catch(error => {
-            console.log('Error fetching 5-day forecast data:', error);
+    .then(response => response.json())
+    .then(data => {
+      const dailyForecasts = {};
+      data.list.forEach(forecast => {
+          const date = forecast.dt_txt.split(' ')[0];
+          if (!dailyForecasts[date]) {
+            dailyForecasts[date] = [];
+          }
+          dailyForecasts[date].push(forecast);
         });
-}
-
+  
+        // Loop through each date and create weather boxes
+        Object.keys(dailyForecasts).forEach(date => {
+          const forecastsForDay = dailyForecasts[date];
+          let totalTemp = 0;
+          let totalHumidity = 0;
+          let totalWindSpeed = 0;
+  
+          forecastsForDay.forEach(forecast => {
+            totalTemp += forecast.main.temp;
+            totalHumidity += forecast.main.humidity;
+            totalWindSpeed += forecast.wind.speed;
+          });
+  
+          const averageTemp = totalTemp / forecastsForDay.length;
+          const averageHumidity = totalHumidity / forecastsForDay.length;
+          const averageWindSpeed = totalWindSpeed / forecastsForDay.length;
+  
+          createWeatherBox(city, date, averageTemp, averageHumidity, averageWindSpeed);
+        });
+      })
+      .catch(error => {
+        console.log('Error fetching 5-day forecast data:', error);
+      });
+  }
 document.addEventListener('DOMContentLoaded', function () {
     // City Buttons
     const cityButtons = document.querySelectorAll('.city-button');
