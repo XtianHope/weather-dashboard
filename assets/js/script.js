@@ -27,9 +27,9 @@ function getWeather(city) {
         console.log('Error fetching weather data:', error);
       });
   }
-
-// Function to create separate boxes for each date and weather information
-function createWeatherBox(city, date, averageTemp, averageHumidity, averageWindSpeed) {
+  
+  // Function to create separate boxes for each date and weather information
+  function createWeatherBox(city, date, averageTemp, averageHumidity, averageWindSpeed) {
     const forecastContainer = document.getElementById(`${city}-forecast`);
     const forecastElement = document.createElement('div');
     forecastElement.classList.add('forecast-box');
@@ -45,10 +45,10 @@ function createWeatherBox(city, date, averageTemp, averageHumidity, averageWindS
   
     forecastContainer.appendChild(forecastElement);
   }
-
-
-// Function to pull 5-day forecast data from OpenWeather API
-function getFiveDayForecast(city) {
+  
+  
+  // Function to pull 5-day forecast data from OpenWeather API
+  function getFiveDayForecast(city) {
     const apiKey = '8823600ae11757d74ec67f06b60ca5ef';
     const apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
   
@@ -88,10 +88,10 @@ function getFiveDayForecast(city) {
         console.log('Error fetching 5-day forecast data:', error);
       });
   }
-
-
-// Function to handle adding a city button
-function addCityButton(city) {
+  
+  
+  // Function to handle adding a city button dynamically
+  function addCityButton(city) {
     const cityOptions = document.querySelector('aside');
     const newButton = document.createElement('button');
     newButton.classList.add('city-button');
@@ -107,11 +107,13 @@ function addCityButton(city) {
   
     // Check if the city name is not empty
     if (cityName !== '') {
+      // Add the city button dynamically
       addCityButton(cityName);
   
       // Clear the search input field
       searchInput.value = '';
   
+      // Trigger a click on the newly added city button to display weather information
       const dynamicButton = document.querySelector(`[data-city="${cityName.toLowerCase()}"]`);
       if (dynamicButton) {
         dynamicButton.click();
@@ -120,9 +122,9 @@ function addCityButton(city) {
       alert('Please enter a city name!');
     }
   }
-
-// Function to create weather icons based on weather conditions
-function createWeatherIcon(city, iconClass) {
+  
+  // Function to create weather icons based on weather conditions
+  function createWeatherIcon(city, iconClass) {
     const weatherIconElement = document.getElementById(`${city}-weather-icon`);
     weatherIconElement.innerHTML = `<i class="${iconClass}"></i>`;
   }
@@ -153,21 +155,20 @@ function createWeatherIcon(city, iconClass) {
         windElement.textContent = `Wind Speed: ${data.wind.speed} mph`;
   
         const weatherCondition = data.weather[0].main;
-
- // Define the weather icons mapping outside any function
-const weatherIcons = {
+  // Define the weather icons mapping outside any function
+  const weatherIcons = {
     Clear: 'wi wi-day-sunny', 
     Clouds: 'wi wi-day-cloudy',
-  };       
-
-// Function to create weather icons based on weather conditions
-function createWeatherIcon(city, iconClass) {
+  };
+  
+  // Function to create weather icons based on weather conditions
+  function createWeatherIcon(city, iconClass) {
     const weatherIconElement = document.getElementById(`${city}-weather-icon`);
     weatherIconElement.innerHTML = `<i class="${iconClass}"></i>`;
   }
   
-// Function to pull weather data from OpenWeather API
-function getWeather(city) {
+  // Function to pull weather data from OpenWeather API
+  function getWeather(city) {
     const apiKey = '8823600ae11757d74ec67f06b60ca5ef';
     const currentWeatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   
@@ -198,24 +199,25 @@ function getWeather(city) {
         if (weatherIcons[weatherCondition]) {
           const iconClass = weatherIcons[weatherCondition];
           createWeatherIcon(city, iconClass);
+        }
       })
       .catch(error => {
         console.log('Error fetching weather data:', error);
       });
   }
-
-      // Set the weather icon based on the condition
-      if (weatherIcons[weatherCondition]) {
-        const iconClass = weatherIcons[weatherCondition];
-        weatherIconElement.innerHTML = `<i class="${iconClass}"></i>`;
-      }
-    })
-    .catch(error => {
-      console.log('Error fetching weather data:', error);
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function () {
+  
+  
+        // Set the weather icon based on the condition
+        if (weatherIcons[weatherCondition]) {
+          const iconClass = weatherIcons[weatherCondition];
+          weatherIconElement.innerHTML = `<i class="${iconClass}"></i>`;
+        }
+      })
+      .catch(error => {
+        console.log('Error fetching weather data:', error);
+      });
+  }
+  document.addEventListener('DOMContentLoaded', function () {
     const cityButtons = document.querySelectorAll('.city-button');
     const flexContainer = document.querySelector('.flex-container');
   
@@ -228,11 +230,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const city = button.getAttribute('data-city');
       const cityContainer = document.getElementById(`${city}-container`);
   
+      // Check if weather data for the city has already been fetched
       if (!fetchedCities.includes(city)) {
+    
         fetchedCities.push(city); 
         cityContainer.style.display = 'block';
         getWeather(city); 
-        getFiveDayForecast(city);
+        getFiveDayForecast(city); 
       } else {
         // If already fetched, simply display the weather container
         cityContainer.style.display = 'block';
