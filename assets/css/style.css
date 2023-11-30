@@ -74,19 +74,7 @@ aside {
     font-weight: bold;
 }
 
-.city-option {
-    padding: 5px 10px;
-    width: 30%;
-    background-color: #cbcbce;
-    color: #080808;
-    border: 2px solid black;
-    border-radius: 3px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 15px;
-    margin-bottom: 10px;
-    align-items: center;
-}
+
 
 .city-button {
     padding: 5px 10px;

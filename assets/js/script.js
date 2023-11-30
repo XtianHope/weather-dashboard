@@ -67,11 +67,6 @@ function getFiveDayForecast(city) {
 }
 
 
-// Function to handle adding a city button
-function addCityButton(city) {
-
-}
-
 
 
 // Function to handle the search event
