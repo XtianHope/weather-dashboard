@@ -18,100 +18,83 @@
     </nav>
     <main class="main-container">
         <aside>
-            <!-- Left column for city search/options -->
+            <!-- Left column for city search history -->
             <h2>Search For A City:</h2>
             <input type="text" id="search-input" placeholder="Enter City Name">
             <button id="search-button">Search</button>
 
-            <h2>City Options</h2>
-            <button class="city-button" data-city="charlotte">Charlotte</button>
-            <button class="city-button" data-city="raleigh">Raleigh</button>
-            <button class="city-button" data-city="greensboro">Greensboro</button>
-            <button class="city-button" data-city="durham">Durham</button>
-            <button class="city-button" data-city="winston-salem">Winston-Salem</button>
+            <h2>Search History</h2>
+            <button class="city-button" data-city="placeholder">PLACEHOLDER SEARCH HISTORY BUTTON</button>
         </aside>
 
         <!-- Container for weather information -->
         <div class="flex-container">
-            <!-- CHARLOTTE -->
-            <div class="weather-container" id="charlotte-container">
-                <h2>Charlotte</h2>
-                <div class="forecast-container" id="charlotte-forecast"></div>
+            <div class="weather-container" id="day-1-container">
+                <div class="forecast-container" id="day-1-forecast"></div>
                 <div class="weather-info-item">
                     <span class="info-label">Weather: </span>
-                    <span class="info-value" id="charlotte-weather-icon"></span>
+                    <img class="info-value" id="day-1-weather-icon"></img>
                     <span class="info-label">Temperature: </span>
-                    <span class="info-value" id="charlotte-temp"></span>
+                    <span class="info-value" id="day-1-temp"></span>
                     <span class="info-label">Humidity: </span>
-                    <span class="info-value" id="charlotte-humidity"></span>
+                    <span class="info-value" id="day-1-humidity"></span>
                     <span class="info-label">Wind Speed: </span>
-                    <span class="info-value" id="charlotte-wind"></span>
+                    <span class="info-value" id="day-1-wind"></span>
                 </div>
             </div>
-            <!-- RALEIGH -->
-            <div class="weather-container" id="raleigh-container">
-                <h2>Raleigh</h2>
-                <div class="forecast-container" id="raleigh-forecast"></div>
+            <div class="weather-container" id="day-2-container">
+                <div class="forecast-container" id="day-2-forecast"></div>
                 <div class="weather-info-item">
                     <span class="info-label">Weather: </span>
-                    <span class="info-value" id="raleigh-weather-icon"></span>
+                    <img class="info-value" id="day-2-weather-icon"></img>
                     <span class="info-label">Temperature: </span>
-                    <span class="info-value" id="raleigh-temp"></span>
+                    <span class="info-value" id="day-2-temp"></span>
                     <span class="info-label">Humidity: </span>
-                    <span class="info-value" id="raleigh-humidity"></span>
+                    <span class="info-value" id="day-2-humidity"></span>
                     <span class="info-label">Wind Speed: </span>
-                    <span class="info-value" id="raleigh-wind"></span>
+                    <span class="info-value" id="day-2-wind"></span>
                 </div>
             </div>
-            <!-- GREENSBORO -->
-            <div class="weather-container" id="greensboro-container">
-                <h2>Greensboro</h2>
-                <div class="forecast-container" id="greensboro-forecast"></div>
+            <div class="weather-container" id="day-3-container">
+                <div class="forecast-container" id="day-3-forecast"></div>
                 <div class="weather-info-item">
                     <span class="info-label">Weather: </span>
-                    <span class="info-value" id="greensboro-weather-icon"></span>
+                    <img class="info-value" id="day-3-weather-icon"></img>
                     <span class="info-label">Temperature: </span>
-                    <span class="info-value" id="greensboro-temp"></span>
+                    <span class="info-value" id="day-3-temp"></span>
                     <span class="info-label">Humidity: </span>
-                    <span class="info-value" id="greensboro-humidity"></span>
+                    <span class="info-value" id="day-3-humidity"></span>
                     <span class="info-label">Wind Speed: </span>
-                    <span class="info-value" id="greensboro-wind"></span>
+                    <span class="info-value" id="day-3-wind"></span>   
                 </div>
             </div>
-            <!-- DURHAM -->
-            <div class="weather-container" id="durham-container">
-                <h2>Durham</h2>
-                <div class="forecast-container" id="durham-forecast"></div>
+            <div class="weather-container" id="day-4-container">
+                <div class="forecast-container" id="day-4-forecast"></div>
                 <div class="weather-info-item">
                     <span class="info-label">Weather: </span>
-                    <span class="info-value" id="durham-weather-icon"></span>
+                    <img class="info-value" id="day-4-weather-icon"></img>
                     <span class="info-label">Temperature: </span>
-                    <span class="info-value" id="durham-temp"></span>
+                    <span class="info-value" id="day-4-temp"></span>
                     <span class="info-label">Humidity: </span>
-                    <span class="info-value" id="durham-humidity"></span>
+                    <span class="info-value" id="day-4-humidity"></span>
                     <span class="info-label">Wind Speed: </span>
-                    <span class="info-value" id="durham-wind"></span>
+                    <span class="info-value" id="day-4-wind"></span>
                 </div>
             </div>
-            <!-- WINSTON-SALEM -->
-            <div class="weather-container" id="winston-salem-container">
-                <h2>Winston-Salem</h2>
-                <div class="forecast-container" id="winston-salem-forecast"></div>
+            <div class="weather-container" id="day-5-container">
+                <div class="forecast-container" id="day-5-forecast"></div>
                 <div class="weather-info-item">
                     <span class="info-label">Weather: </span>
-                    <span class="info-value" id="winston-salem-weather-icon"></span>
+                    <img class="info-value" id="day-5-weather-icon"></img>
                     <span class="info-label">Temperature: </span>
-                    <span class="info-value" id="winston-salem-temp"></span>
+                    <span class="info-value" id="day-5-temp"></span>
                     <span class="info-label">Humidity: </span>
-                    <span class="info-value" id="winston-salem-humidity"></span>
+                    <span class="info-value" id="day-5-humidity"></span>
                     <span class="info-label">Wind Speed: </span>
-                    <span class="info-value" id="winston-salem-wind"></span>
+                    <span class="info-value" id="day-5-wind"></span>
                 </div>
             </div>
         </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./assets/js/script.js"></script>
-</body>
 
 </html>

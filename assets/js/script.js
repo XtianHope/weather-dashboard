@@ -1,7 +1,5 @@
 var APIKey = "8823600ae11757d74ec67f06b60ca5ef"
-var city = "Charlotte";
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
-var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
+var city = "";
 var clearButton = document.querySelector("#clear-history");
 var results = document.querySelector("#results");
 var weatherContainer;
