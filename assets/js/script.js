@@ -7,34 +7,31 @@ var results = document.querySelector("#results");
 var weatherContainer;
 
 // Function to pull weather data from OpenWeather API
-function getWeather(city) {
-    const apiKey = '8823600ae11757d74ec67f06b60ca5ef';
-    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-
-  fetch(currentWeatherUrl)
-    .then(response => response.json())
-    .then(data => {
-      const tempElement = document.getElementById(`${city}-temp`);
-      const humidityElement = document.getElementById(`${city}-humidity`);
-      const windElement = document.getElementById(`${city}-wind`);
-      const dateElement = document.getElementById(`${city}-date`);
-
-      const currentDate = new Date().toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
-
-      dateElement.textContent = `Today: ${currentDate}`;
-      tempElement.textContent = `Temperature: ${data.main.temp} °F`;
-      humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
-      windElement.textContent = `Wind Speed: ${data.wind.speed} mph`;
+function getGeoWeather(Lat, Lon) {
+  fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + Lat + "&lon=" + Lon + "&appid=" + APIKey)
+    .then(function(response) {
+      return response.json();
     })
-    .catch(error => {
-      console.log('Error fetching weather data:', error);
+    .then(function(data) {
+      console.log(data);
+      console.log(data.list);
     });
-}
+  }
+
+  function getCityGeoData(city) {
+    var city = "";
+  
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      console.log(data);
+      var lat = data[0].lat;
+      var lon = data[0].lon;
+      getGeoWeather(lat, lon);
+    })
+  }
 
 // Function to pull 5-day forecast data from OpenWeather API
 function getFiveDayForecast(city) {
@@ -62,6 +59,12 @@ function handleSearch(event) {
 // Function to display weather icons
 function displayWeatherIcon(iconCode) {
 }
+
+
+// Function to store searched cities in local storage
+function storeCity(city) {
+}
+
 
  // Add cityButtons event listener
  document.addEventListener('DOMContentLoaded', function () {
