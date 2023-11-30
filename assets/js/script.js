@@ -72,7 +72,18 @@ function addCityButton(city) {
 
 
 // Function to handle the search event
-function handleSearch(event) {
+function handleSearch() {
+  city = $('#search-input').val();
+  if(!city){
+    alert('Please enter valid city plz');
+    document.querySelectorAll('.weather-container').forEach(container => {
+      container.style.display = 'none';
+    });
+    return;
+  }
+
+  getFiveDayForecast(city);
+
 }
 
 
