@@ -46,7 +46,7 @@ aside {
 
 .flex-container {
     flex: 85%;
-    flex-wrap: wrap display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -105,7 +105,7 @@ aside {
     display: none;
 }
 
-.forecast-box {
+.forecast-container {
     border: 3px solid #ccc;
     padding: 10px;
     margin-bottom: 30px;
@@ -117,13 +117,13 @@ aside {
     background-color: #09057e;
 }
 
-.forecast-box .date {
+.forecast-container .date {
     font-weight: bold;
     margin-bottom: 30px;
     align-items: center;
 }
 
-.forecast-box .weather-info p {
+.forecast-container .weather-info p {
     margin-bottom: 5px;
     align-items: center;
 }

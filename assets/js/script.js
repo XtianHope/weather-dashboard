@@ -1,5 +1,5 @@
 var APIKey = "8823600ae11757d74ec67f06b60ca5ef"
-var city = "";
+var city = '';
 var clearButton = document.querySelector("#clear-history");
 var results = document.querySelector("#results");
 var weatherContainer;
@@ -30,6 +30,9 @@ function getGeoWeather(Lat, Lon) {
       getGeoWeather(lat, lon);
     })
   }
+
+
+
 
 // Function to pull 5-day forecast data from OpenWeather API
 function getFiveDayForecast(city) {
@@ -64,13 +67,18 @@ function getFiveDayForecast(city) {
 }
 
 
+// Function to handle adding a city button
+function addCityButton(city) {
+
+}
+
 
 
 // Function to handle the search event
 function handleSearch() {
   city = $('#search-input').val();
   if(!city){
-    alert('Please enter valid city plz');
+    alert('Please enter a valid city');
     document.querySelectorAll('.weather-container').forEach(container => {
       container.style.display = 'none';
     });
@@ -78,38 +86,46 @@ function handleSearch() {
   }
 
   getFiveDayForecast(city);
-
+  storeCity(city); // Store the searched city
 }
-
-
 
 // Function to store searched cities in local storage
 function storeCity(city) {
+  const storedCities = JSON.parse(localStorage.getItem('searchedCities')) || [];
+  
+  if (!storedCities.includes(city)) {
+    storedCities.push(city); 
+    localStorage.setItem('searchedCities', JSON.stringify(storedCities)); 
+  }
 }
 
 
  // Add cityButtons event listener
  document.addEventListener('DOMContentLoaded', function () {
-  const cityButtons = document.querySelectorAll('.city-button');
-  const flexContainer = document.querySelector('.flex-container');
+    const cityButtons = document.querySelectorAll('.city-button');
+    const flexContainer = document.querySelector('.flex-container');
+  
+    const fetchedCities = [];
 
-  const fetchedCities = [];
-
-cityButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const city = button.getAttribute('data-city');
-    const cityContainer = document.getElementById(`${city}-container`);
+  // Loop through cityButtons
+  cityButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const city = button.getAttribute('data-city');
+      const cityContainer = document.getElementById(`${city}-container`);
+      // When clicking on a stored city button, perform the search for that city
+      getFiveDayForecast(city);
+      storeCity(city);
+    });
   });
-});
 
-// Hide all other weather containers except the clicked one
-document.querySelectorAll('.weather-container').forEach(container => {
-    container.style.display = 'none';
-});
+  // Hide all other weather containers except the clicked one
+  document.querySelectorAll('.weather-container').forEach(container => {
+      container.style.display = 'none';
+  });
 
-// Search Button
-const searchButton = document.getElementById("search-button");
-searchButton.addEventListener('click', () => {
-  handleSearch();
-});
-});
+  // Search Button
+  const searchButton = document.getElementById("search-button");
+  searchButton.addEventListener('click', () => {
+    handleSearch();
+  });
+ });
