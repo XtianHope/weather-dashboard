@@ -35,15 +35,35 @@ function getGeoWeather(Lat, Lon) {
 
 // Function to pull 5-day forecast data from OpenWeather API
 function getFiveDayForecast(city) {
-    const apiKey = '8823600ae11757d74ec67f06b60ca5ef';
-    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`; 
+  const apiKey = '8823600ae11757d74ec67f06b60ca5ef';
+  const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`; 
 
-    fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-      const dailyForecasts = {};
+  fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    const dailyForecasts = {};
+    const cityName = data.city.name;
+
+    for (let dayIndex = 0; dayIndex < 5; dayIndex++) {
+      const currentDay = data.list[dayIndex * 8];
+      const tempMax = currentDay.main.temp_max;
+      const tempMin = currentDay.main.temp_min;
+      const humidity = currentDay.main.humidity;
+      const wind = currentDay.wind.speed;
+      const icon = currentDay.weather[0].icon;
+      const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+      const iconImg = document.getElementById(`day-${dayIndex + 1}-weather-icon`);
+      iconImg.src = iconUrl;
+
+      // Display weather container for each day
+      const weatherContainer = document.querySelector(`#day-${dayIndex + 1}-container`);
+      weatherContainer.style.display = 'flex';
+    }
+})
+.catch(error => {
+  console.log('Error fetching data:', error);
+});
 }
-
 
 // Function to handle adding a city button
 function addCityButton(city) {
